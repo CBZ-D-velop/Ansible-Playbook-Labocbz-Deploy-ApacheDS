@@ -1,0 +1,5 @@
+---
+- name: "Include labocbz.deploy_apacheds playbook"
+  tags:
+      - "labocbz.deploy_apacheds"
+  ansible.builtin.import_playbook: "../../playbook.yml"
