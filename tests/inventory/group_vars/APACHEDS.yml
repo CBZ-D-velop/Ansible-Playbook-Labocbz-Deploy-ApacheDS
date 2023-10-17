@@ -1,0 +1,51 @@
+---
+
+inv_install_apacheds_version: "2.0.0.AM26"
+inv_install_apacheds_user: "root"
+inv_install_apacheds_group: "root"
+
+inv_install_apacheds_install_dir: "/usr/share/apacheds"
+inv_install_apacheds_path: "{{ inv_install_apacheds_install_dir }}/apacheds-{{ inv_install_apacheds_version }}"
+inv_install_apacheds_ssl_path: "{{ inv_install_apacheds_path }}/ssl"
+
+inv_install_apacheds_instances:
+  - name: "local"
+    memory: "2048m"
+    password: "notsecret"
+    loglevel: "WARN"
+    ldap_port: 10389
+    ldaps_port: 10636
+    ssl: true
+    crt_file: "{{ inv_install_apacheds_ssl_path }}/my-apacheds-server.domain.tld/my-apacheds-server.domain.tld.pem.crt"
+    key_file: "{{ inv_install_apacheds_ssl_path }}/my-apacheds-server.domain.tld/my-apacheds-server.domain.tld.pem.key"
+    jks_password: "notRealSecretTo"
+
+  - name: "notlocal"
+    memory: "2048m"
+    password: "notsecretto"
+    loglevel: "WARN"
+    ldap_port: 10390
+
+
+inv_apacheds_cert_bundles:
+  - name: "My-Local-Ansible-Root-CA.pem.crt"
+    type: "CA"
+    src: "/tmp/My-Local-Ansible-Root-CA.pem.crt"
+
+  - name: "My-Local-Ansible-Intermediate-CA-1.pem.crt"
+    type: "CA"
+    src: "/tmp/My-Local-Ansible-Intermediate-CA-1.pem.crt"
+
+  - name: "My-Local-Ansible-Intermediate-CA-2.pem.crt"
+    type: "CA"
+    src: "/tmp/My-Local-Ansible-Intermediate-CA-2.pem.crt"
+
+  - name: "my-apacheds-server.domain.tld"
+    type: "cert"
+    src: "/tmp/my-apacheds-server.domain.tld.zip"
+    dest: "{{ inv_install_apacheds_ssl_path }}"
+    #src_user: "myUser"
+    #src_password: "secretPassword"
+    dest_user: "{{ inv_install_apacheds_user }}"
+    dest_group: "{{ inv_install_apacheds_group }}"
+    dest_mode: "0700"
