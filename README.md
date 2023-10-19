@@ -18,7 +18,15 @@
 
 An Ansible playbook to deploy and configure ApacheDS on your host.
 
+This playbook simplifies the installation and deployment of Apache Directory Server instances. The process begins by installing ApacheDS and subsequently copying the default instances to create the requested instances. Passwords and ports are also customized, and the instances are launched as services.
+
+With this playbook, you can easily set up and manage ApacheDS instances, ensuring they meet your specific requirements. It's a powerful tool for streamlining the deployment of directory services and enhancing your directory server environment.
+
 ## Deployment diagramm
+
+![](./assets/Ansible-Playbook-Labocbz-Deploy-ApacheDS.drawio.svg)
+
+This is a potential deployment achieved with this playbook. We can observe an ApacheDS service component, with the ApacheDS subsystem installed on a host. Within this setup, we have two LDAP instance components accessible through multiple ports. It's also possible to reinstall services without deploying new instances.
 
 ## Tests and simulations
 
@@ -92,6 +100,13 @@ Here you can put your change to keep a trace of your work and decisions.
 
 * First init of this playbook with the bootstrap_playbook playbook by Lord Robin Crombez
 
+### 2023-10-19: Fix and push
+
+* Playbook deploy ApacheDS
+* Multiple instance are possible
+* TLS available
+* Edit of the default password
+
 ## Authors
 
 * Lord Robin Crombez
@@ -100,3 +115,4 @@ Here you can put your change to keep a trace of your work and decisions.
 
 * [Ansible playbook documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_playbooks.html)
 * [Ansible Molecule documentation](https://molecule.readthedocs.io/)
+* [install_apacheds](https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-ApacheDS.git)
