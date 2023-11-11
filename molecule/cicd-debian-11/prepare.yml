@@ -57,18 +57,3 @@
         owner: "root"
         group: "root"
         mode: 0700
-
-# if you have any prepararion task
-- name: "Prepare Java for ApacheDS"
-  hosts: "all:&APACHEDS:&JAVA"
-  gather_facts: true
-  tasks:
-    - name: "Include labocbz.install_java"
-      tags:
-        - "labocbz.install_java"
-      vars:
-        java_version: "{{ inv_java_version }}"
-        java_cpu_architecture: "{{ inv_java_cpu_architecture }}"
-        java_version_is_default: true
-      ansible.builtin.include_role:
-        name: "labocbz.install_java"
