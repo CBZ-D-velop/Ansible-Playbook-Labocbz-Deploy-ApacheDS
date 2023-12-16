@@ -107,6 +107,11 @@ Here you can put your change to keep a trace of your work and decisions.
 * TLS available
 * Edit of the default password
 
+### 2023-12-16: System users
+
+* Role can now use system users and address groups
+* Updated with 10 years cert
+
 ## Authors
 
 * Lord Robin Crombez
