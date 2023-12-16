@@ -1,4 +1,8 @@
 ---
+inv_prepare_host_system_users:
+  - login: "apacheds"
+    group: "apacheds"
+
 inv_install_apacheds: true
 
 inv_install_apacheds_version: "2.0.0.AM27"
