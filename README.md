@@ -109,8 +109,16 @@ Here you can put your change to keep a trace of your work and decisions.
 
 ### 2023-12-16: System users
 
-* Role can now use system users and address groups
+* Playbook can now use system users and address groups
 * Updated with 10 years cert
+
+### 2023-12-18: Fix and tests
+
+* Fix default install
+* Fix Java install
+* Add tests for Java
+* Boolean vars based deployment
+* System user fix
 
 ## Authors
 

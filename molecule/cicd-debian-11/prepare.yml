@@ -34,6 +34,14 @@
   gather_facts: true
   tasks:
 
+    - name: "Include labocbz.prepare_host"
+      tags:
+        - "labocbz.prepare_host"
+      vars:
+        prepare_host_system_users: "{{ inv_prepare_host_apacheds_system_users }}"
+      ansible.builtin.include_role:
+        name: "labocbz.prepare_host"
+
     - name: "Import cryptographic content if needed (cert)"
       loop: "{{ inv_apacheds_cert_bundles }}"
       loop_control:
