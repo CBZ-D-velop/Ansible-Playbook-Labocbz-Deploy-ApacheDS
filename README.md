@@ -120,6 +120,10 @@ Here you can put your change to keep a trace of your work and decisions.
 * Boolean vars based deployment
 * System user fix
 
+### 2024-02-02: Latest
+
+* Use latest version of role
+
 ## Authors
 
 * Lord Robin Crombez
