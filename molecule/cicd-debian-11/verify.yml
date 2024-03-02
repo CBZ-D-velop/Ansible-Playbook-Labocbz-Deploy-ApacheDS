@@ -46,7 +46,7 @@
             loop_var: instance
           ansible.builtin.wait_for:
             host: "localhost"
-            port: "{{ instance.ldap_port }}"
+            port: "10389"
             timeout: 120
 
         - name: "Check ApacheDS connectivities LDAPS"
@@ -56,7 +56,7 @@
             loop_var: instance
           ansible.builtin.wait_for:
             host: "localhost"
-            port: "{{ instance.ldaps_port }}"
+            port: "10636"
             timeout: 120
 
         - name: "Get default admin informations from instances LDAP"
@@ -66,4 +66,4 @@
           register: admin_instance_result
           failed_when: admin_instance_result.stdout == ""
           changed_when: admin_instance_result.rc != 0
-          ansible.builtin.command: "ldapsearch -x -H ldap://localhost:{{ instance.ldap_port }} -D 'uid=admin,ou=system' -b 'dc=example,dc=com' -w '{{ instance.password }}'"
+          ansible.builtin.command: "ldapsearch -x -H ldap://localhost:10389 -D 'uid=admin,ou=system' -b 'dc=example,dc=com' -w '{{ instance.password }}'"
