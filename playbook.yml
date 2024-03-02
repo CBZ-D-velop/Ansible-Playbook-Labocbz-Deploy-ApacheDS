@@ -2,8 +2,6 @@
 - name: "Deploy ApacheDS"
   hosts: "{{ tower_env | default([]) }}"
   gather_facts: true
-  remote_user: root
-  strategy: free
   become: true
   become_method: sudo
   become_user: root
@@ -18,7 +16,7 @@
           tags:
             - "labocbz.prepare_host"
           vars:
-            prepare_host_system_users: "{{ inv_prepare_host_apacheds_system_users }}"
+            prepare_host__system_users: "{{ inv_prepare_host__apacheds_system_users }}"
           ansible.builtin.include_role:
             name: "labocbz.prepare_host"
 
@@ -26,9 +24,9 @@
           tags:
             - "labocbz.install_java"
           vars:
-            java_version: "{{ inv_java_version }}"
-            java_cpu_architecture: "{{ inv_java_cpu_architecture }}"
-            java_version_is_default: true
+            install_java__version: "{{ inv_install_java__version }}"
+            install_java__cpu_architecture: "{{ inv_install_java__cpu_architecture }}"
+            install_java__version_is_default: true
           ansible.builtin.include_role:
             name: "labocbz.install_java"
 
@@ -40,15 +38,15 @@
             loop_var: bundle
           when: inv_apacheds_cert_bundles is defined
           vars:
-            add_certificates_bundle_name: "{{ bundle.name }}"
-            add_certificates_bundle_type: "{{ bundle.type }}"
-            add_certificates_bundle_src: "{{ bundle.src }}"
-            add_certificates_bundle_dest: "{{ bundle.dest }}"
-            add_certificates_bundle_src_user: "{{ bundle.src_user }}"
-            add_certificates_bundle_src_password: "{{ bundle.src_password }}"
-            add_certificates_bundle_dest_user: "{{ bundle.dest_user }}"
-            add_certificates_bundle_dest_group: "{{ bundle.dest_group }}"
-            add_certificates_bundle_dest_mode: "{{ bundle.dest_mode }}"
+            add_certificates__bundle_name: "{{ bundle.name }}"
+            add_certificates__bundle_type: "{{ bundle.type }}"
+            add_certificates__bundle_src: "{{ bundle.src }}"
+            add_certificates__bundle_dest: "{{ bundle.dest }}"
+            add_certificates__bundle_src_user: "{{ bundle.src_user }}"
+            add_certificates__bundle_src_password: "{{ bundle.src_password }}"
+            add_certificates__bundle_dest_user: "{{ bundle.dest_user }}"
+            add_certificates__bundle_dest_group: "{{ bundle.dest_group }}"
+            add_certificates__bundle_dest_mode: "{{ bundle.dest_mode }}"
           ansible.builtin.include_role:
             name: "labocbz.add_certificates"
 
@@ -56,17 +54,17 @@
           tags:
             - "labocbz.install_apacheds"
           vars:
-            install_apacheds_version: "{{ inv_install_apacheds_version }}"
-            install_apacheds_user: "{{ inv_install_apacheds_user }}"
-            install_apacheds_group: "{{ inv_install_apacheds_group }}"
-            install_apacheds_install_dir: "{{ inv_install_apacheds_install_dir }}"
-            install_apacheds_path: "{{ inv_install_apacheds_path }}"
-            install_apacheds_instances: "{{ inv_install_apacheds_instances }}"
-            install_apacheds_ssl_path: "{{ inv_install_apacheds_ssl_path }}"
-            install_apacheds_ssl_ca: "{{ inv_install_apacheds_ssl_ca }}"
-            install_apacheds_ssl: "{{ inv_install_apacheds_ssl }}"
-            install_apacheds_ssl_crt: "{{ inv_install_apacheds_ssl_crt }}"
-            install_apacheds_ssl_key: "{{ inv_install_apacheds_ssl_key }}"
-            install_apacheds_ssl_p12_password: "{{ inv_install_apacheds_ssl_p12_password }}"
+            install_apacheds__version: "{{ inv_install_apacheds__version }}"
+            install_apacheds__user: "{{ inv_install_apacheds__user }}"
+            install_apacheds__group: "{{ inv_install_apacheds__group }}"
+            install_apacheds__install_dir: "{{ inv_install_apacheds__install_dir }}"
+            install_apacheds__path: "{{ inv_install_apacheds__path }}"
+            install_apacheds__instances: "{{ inv_install_apacheds__instances }}"
+            install_apacheds__ssl_path: "{{ inv_install_apacheds__ssl_path }}"
+            install_apacheds__ssl_ca: "{{ inv_install_apacheds__ssl_ca }}"
+            install_apacheds__ssl: "{{ inv_install_apacheds__ssl }}"
+            install_apacheds__ssl_crt: "{{ inv_install_apacheds__ssl_crt }}"
+            install_apacheds__ssl_key: "{{ inv_install_apacheds__ssl_key }}"
+            install_apacheds__ssl_p12_password: "{{ inv_install_apacheds__ssl_p12_password }}"
           ansible.builtin.include_role:
             name: "labocbz.install_apacheds"

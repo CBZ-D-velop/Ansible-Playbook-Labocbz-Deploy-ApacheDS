@@ -124,6 +124,12 @@ Here you can put your change to keep a trace of your work and decisions.
 
 * Use latest version of role
 
+### 2024-03-02: Remastered
+
+* Imported new CICD
+* Rework global on readme
+* Rename of vars __ and refacto
+
 ## Authors
 
 * Lord Robin Crombez
