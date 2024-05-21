@@ -3,7 +3,7 @@
   hosts: "{{ tower_env | default([]) }}"
   gather_facts: true
   become: true
-  become_method: "ansible.builtin.sudo"
+  become_method: sudo
   tags:
     - "labocbz.install_apacheds"
 
@@ -16,6 +16,7 @@
             - "labocbz.prepare_host"
           vars:
             prepare_host__system_users: "{{ inv_prepare_host__apacheds_system_users }}"
+            prepare_host__timezone: "{{ inv_prepare_host__timezone }}"
           ansible.builtin.include_role:
             name: "labocbz.prepare_host"
 
