@@ -6,6 +6,8 @@ inv_prepare_host__apacheds_system_users:
   - login: "apacheds"
     group: "apacheds"
 
+inv_prepare_host__timezone: "Eurpose/Paris"
+
 inv_prepare_host__system_users:
   - login: "apacheds"
     group: "apacheds"
