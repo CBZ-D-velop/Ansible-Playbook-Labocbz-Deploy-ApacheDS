@@ -24,7 +24,7 @@ With this playbook, you can easily set up and manage ApacheDS instances, ensurin
 
 ## Deployment diagramm
 
-![](./assets/Ansible-Playbook-Labocbz-Deploy-ApacheDS.drawio.svg)
+![Ansible-Playbook-Labocbz-Deploy-ApacheDS](./assets/Ansible-Playbook-Labocbz-Deploy-ApacheDS.drawio.svg)
 
 This is a potential deployment achieved with this playbook. We can observe an ApacheDS service component, with the ApacheDS subsystem installed on a host. Within this setup, we have two LDAP instance components accessible through multiple ports. It's also possible to reinstall services without deploying new instances.
 
@@ -35,7 +35,6 @@ This is a potential deployment achieved with this playbook. We can observe an Ap
 You have to run multiples tests. *tests with an # are mandatory*
 
 ```MARKDOWN
-# lint
 # syntax
 # converge
 # idempotence
@@ -60,7 +59,6 @@ yamllint -c ./.yamllint .
 ansible-lint --config=./.ansible-lint .
 
 # Execute and test your playbook
-molecule lint
 molecule create
 molecule list
 molecule converge
@@ -130,6 +128,14 @@ Here you can put your change to keep a trace of your work and decisions.
 * Rework global on readme
 * Rename of vars __ and refacto
 * Removed free / remote user
+
+### 2024-05-19: New CI
+
+* Added Markdown lint to the CICD
+* Rework all Docker images
+* Change CICD vars convention
+* New workers
+* Removed all automation based on branch
 
 ## Authors
 
